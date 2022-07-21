@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bottomNavHome"
+        android:icon="@drawable/bottom_home"
+        android:title="@string/home"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/bottomNavLog"
+        android:icon="@drawable/bottom_log"
+        android:title="@string/log"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/bottomNavNotice"
+        android:icon="@drawable/bottom_notice"
+        android:title="@string/notice"
+        app:showAsAction="always" />
+</menu>

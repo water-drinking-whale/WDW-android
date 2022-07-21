@@ -1,0 +1,10 @@
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorMain</item>
+        <item name="colorPrimaryDark">@color/colorMain</item>
+        <item name="colorAccent">@color/colorMain</item>-->
+    </style>
+    <style name = "SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name = "android:windowBackground">@drawable/splash</item>
+    </style>
+</resources>

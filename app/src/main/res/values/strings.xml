@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">물먹는고래</string>
+
+    <!-- bottomNavigationView -->
+    <string name="home">물마시기</string>
+    <string name="log">기록</string>
+    <string name="notice">알림</string>
+
+    <!-- home fragment -->
+    <string name="home_today">오늘의 물 섭취량은?</string>
+    <string name="home_today_intake">오늘의 물 섭취량을 입력해 주세요!</string>
+    <string name="ex_intake">100</string>
+    <string name="ex_intake_unit">ml</string>
+    <string name="home_setting">설정</string>
+
+    <!-- button -->
+    <string name="positive_btn">확인</string>
+    <string name="negative_btn">취소</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
