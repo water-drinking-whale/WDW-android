@@ -11,14 +11,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".presentation.mypage.MyPageActivity"
-            android:exported="false"/>
-        <activity android:name=".InitActivity"
-            android:exported="false"/>
-        <activity android:name=".SplashActivity"
-            android:exported="false"/>
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".presentation.mypage.MyPageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.log.LogActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.home.HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.award.AwardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.notice.NoticeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".InitActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SplashActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
             android:exported="true"
             android:theme="@style/SplashTheme">
             <intent-filter>

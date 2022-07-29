@@ -53,6 +53,12 @@ dependencies {
 }
 
 dependencies {
+    //Floating action button
+    //noinspection GradleCompatible
+    implementation 'com.android.support:design:26.1.0'
+
+
+
     // Room Database
     def roomVersion = "2.4.2"
 
