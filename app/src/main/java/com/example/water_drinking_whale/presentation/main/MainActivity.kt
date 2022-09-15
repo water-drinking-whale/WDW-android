@@ -15,7 +15,9 @@ import com.example.water_drinking_whale.presentation.award.AwardActivity
 import com.example.water_drinking_whale.presentation.log.LogActivity
 import com.example.water_drinking_whale.presentation.mypage.MyPageActivity
 import com.example.water_drinking_whale.presentation.notice.NoticeActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
