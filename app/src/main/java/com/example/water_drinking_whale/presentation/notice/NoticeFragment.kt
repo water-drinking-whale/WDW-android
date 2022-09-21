@@ -1,24 +1,24 @@
-//package com.example.water_drinking_whale.presentation.notice
+// package com.example.water_drinking_whale.presentation.notice
 //
-//import android.annotation.SuppressLint
-//import android.app.TimePickerDialog
-//import android.content.Context
-//import android.os.AsyncTask
-//import android.os.Bundle
-//import android.view.LayoutInflater
-//import android.view.View
-//import android.view.ViewGroup
-//import androidx.fragment.app.Fragment
-//import androidx.recyclerview.widget.LinearLayoutManager
-//import com.example.water_drinking_whale.presentation.main.MainActivity
-//import com.example.water_drinking_whale.data.database.AppDatabase
-//import com.example.water_drinking_whale.data.database.Notice
-//import com.example.water_drinking_whale.data.database.OnDeleteListener
+// import android.annotation.SuppressLint
+// import android.app.TimePickerDialog
+// import android.content.Context
+// import android.os.AsyncTask
+// import android.os.Bundle
+// import android.view.LayoutInflater
+// import android.view.View
+// import android.view.ViewGroup
+// import androidx.fragment.app.Fragment
+// import androidx.recyclerview.widget.LinearLayoutManager
+// import com.example.water_drinking_whale.presentation.main.MainActivity
+// import com.example.water_drinking_whale.data.database.AppDatabase
+// import com.example.water_drinking_whale.data.database.Notice
+// import com.example.water_drinking_whale.data.database.OnDeleteListener
 //
-//import com.example.water_drinking_whale.databinding.FragmentNoticeBinding
-//import java.util.Calendar
+// import com.example.water_drinking_whale.databinding.FragmentNoticeBinding
+// import java.util.Calendar
 //
-//class NoticeFragment : Fragment(), OnDeleteListener {
+// class NoticeFragment : Fragment(), OnDeleteListener {
 //
 //    private var _binding: FragmentNoticeBinding? = null
 //    private val binding get() = _binding!!
@@ -154,4 +154,4 @@
 //        super.onDestroyView()
 //        _binding = null
 //    }
-//}
+// }

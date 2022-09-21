@@ -1,7 +1,7 @@
 package com.example.water_drinking_whale.presentation.mypage
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.water_drinking_whale.R
 
 class MyPageActivity : AppCompatActivity() {

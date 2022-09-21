@@ -7,5 +7,4 @@ interface MainApi {
 
     @GET("api/v1/record/today")
     suspend fun getTodayRecord(): TodayRecordResponse
-
 }
