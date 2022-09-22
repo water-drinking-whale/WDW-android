@@ -2,11 +2,11 @@ package com.example.water_drinking_whale.presentation.main
 
 import android.animation.ObjectAnimator
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.water_drinking_whale.R
 import com.example.water_drinking_whale.databinding.ActivityMainBinding
@@ -110,8 +110,4 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
-
-
-
 }

@@ -1,7 +1,7 @@
 package com.example.water_drinking_whale.presentation.log
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.water_drinking_whale.R
 
 class LogActivity : AppCompatActivity() {

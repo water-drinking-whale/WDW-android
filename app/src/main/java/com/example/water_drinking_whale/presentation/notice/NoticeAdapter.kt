@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.water_drinking_whale.data.database.Notice
 import com.example.water_drinking_whale.data.database.OnDeleteListener
-
 import com.example.water_drinking_whale.databinding.NoticeBinding
 
 class NoticeAdapter(val context: Context, var list: List<Notice>, var onDeleteListener: OnDeleteListener) : RecyclerView.Adapter<NoticeAdapter.ViewHolder>() {
@@ -17,7 +16,7 @@ class NoticeAdapter(val context: Context, var list: List<Notice>, var onDeleteLi
         return ViewHolder(binding)
     }
 
-    inner class ViewHolder(val binding: NoticeBinding):RecyclerView.ViewHolder(binding.root){
+    inner class ViewHolder(val binding: NoticeBinding) : RecyclerView.ViewHolder(binding.root) {
         val am_pm = binding.ampmTv
         val hour = binding.hourTv
         val minute = binding.minuteTv
@@ -36,7 +35,6 @@ class NoticeAdapter(val context: Context, var list: List<Notice>, var onDeleteLi
                 onDeleteListener.onDeleteListener(notice)
                 return true
             }
-
         })
     }
 

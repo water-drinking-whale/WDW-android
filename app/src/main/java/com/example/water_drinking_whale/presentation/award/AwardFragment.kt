@@ -1,13 +1,13 @@
-//package com.example.water_drinking_whale.presentation.award
+// package com.example.water_drinking_whale.presentation.award
 //
-//import android.os.Bundle
-//import android.view.LayoutInflater
-//import android.view.View
-//import android.view.ViewGroup
-//import androidx.fragment.app.Fragment
-//import com.example.water_drinking_whale.databinding.FragmentAwardBinding
+// import android.os.Bundle
+// import android.view.LayoutInflater
+// import android.view.View
+// import android.view.ViewGroup
+// import androidx.fragment.app.Fragment
+// import com.example.water_drinking_whale.databinding.FragmentAwardBinding
 //
-//class AwardFragment : Fragment() {
+// class AwardFragment : Fragment() {
 //    private var _binding: FragmentAwardBinding? = null
 //    private val binding get() = _binding!!
 //
@@ -29,4 +29,4 @@
 //        super.onDestroyView()
 //        _binding = null
 //    }
-//}
+// }

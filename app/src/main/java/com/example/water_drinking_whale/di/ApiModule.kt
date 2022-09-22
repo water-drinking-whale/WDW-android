@@ -15,5 +15,4 @@ class ApiModule {
     @Provides
     @Singleton
     fun provideMainApi(retrofit: Retrofit): MainApi = retrofit.create(MainApi::class.java)
-
 }

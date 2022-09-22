@@ -11,5 +11,4 @@ class MainRepository @Inject constructor(
 ) {
 
     suspend fun getTodayRecord(): TodayRecordResponse = mainApi.getTodayRecord()
-
 }
