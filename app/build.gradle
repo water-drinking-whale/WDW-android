@@ -95,4 +95,11 @@ dependencies {
     kapt("androidx.room:room-compiler:$roomVersion")
     // optional - Kotlin Extensions and Coroutines support for Room
     implementation("androidx.room:room-ktx:$roomVersion")
+
+    //To use Recyclerview swipe
+    implementation 'com.github.xabaras:RecyclerViewSwipeDecorator:1.4'
+
+/*    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+*/
 }
