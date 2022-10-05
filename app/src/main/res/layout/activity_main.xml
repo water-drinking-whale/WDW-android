@@ -16,20 +16,33 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/mainTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/home_today"
-            android:textAppearance="@style/TextAppearance.AppCompat.Menu"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mainToolbar" />
-
         <LinearLayout
             android:id="@+id/mainLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mainToolbar">
+
+            <TextView
+                android:id="@+id/mainTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/main_today"
+                android:textAppearance="@style/TextAppearance.AppCompat.Menu"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/main"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/mainLinearLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -37,7 +50,7 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mainTv">
+            app:layout_constraintTop_toBottomOf="@+id/mainLinearLayout">
 
             <TextView
                 android:id="@+id/mainTodayIntakeTv"
@@ -77,91 +90,54 @@
                 android:layout_marginStart="4dp" />
         </LinearLayout>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:src="@drawable/whale"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mainLinearLayout" />
-
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/logFab"
+            android:id="@+id/awardsFab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="24dp"
-            android:layout_marginBottom="24dp"
-            app:layout_constraintBottom_toBottomOf="@+id/mainFab"
-            app:layout_constraintEnd_toEndOf="@+id/mainFab"
-            app:layout_constraintStart_toStartOf="@+id/mainFab"
-            app:layout_constraintTop_toTopOf="@+id/mainFab"
-            android:backgroundTint="#ffffff"
+            android:layout_marginEnd="42dp"
+            android:layout_marginBottom="42dp"
+            android:contentDescription="@string/fab_awards"
+            app:backgroundTint="@color/white"
             app:fabSize="normal"
-            android:src="@drawable/bottom_log" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/noticeFab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="24dp"
-            android:layout_marginBottom="24dp"
-            app:layout_constraintBottom_toBottomOf="@+id/mainFab"
-            app:layout_constraintEnd_toEndOf="@+id/mainFab"
-            app:layout_constraintStart_toStartOf="@+id/mainFab"
-            app:layout_constraintTop_toTopOf="@+id/mainFab"
-            android:backgroundTint="#ffffff"
+            android:layout_marginEnd="42dp"
+            android:layout_marginBottom="42dp"
+            android:contentDescription="@string/fab_notice"
+            app:backgroundTint="@color/white"
             app:fabSize="normal"
-            android:src="@drawable/bottom_notice" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/awardFab"
+            android:id="@+id/logFab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="24dp"
-            android:layout_marginBottom="24dp"
-            app:layout_constraintBottom_toBottomOf="@+id/mainFab"
-            app:layout_constraintEnd_toEndOf="@+id/mainFab"
-            app:layout_constraintStart_toStartOf="@+id/mainFab"
-            app:layout_constraintTop_toTopOf="@+id/mainFab"
-            android:backgroundTint="#ffffff"
+            android:layout_marginEnd="42dp"
+            android:layout_marginBottom="42dp"
+            android:contentDescription="@string/fab_log"
+            app:backgroundTint="@color/white"
             app:fabSize="normal"
-            android:src="@drawable/award" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/myPageFab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="24dp"
-            android:layout_marginBottom="24dp"
-            app:layout_constraintBottom_toBottomOf="@+id/mainFab"
-            app:layout_constraintEnd_toEndOf="@+id/mainFab"
-            app:layout_constraintStart_toStartOf="@+id/mainFab"
-            app:layout_constraintTop_toTopOf="@+id/mainFab"
-            android:backgroundTint="#ffffff"
-            app:fabSize="normal"
-            android:src="@drawable/my_page" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/mainFab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="24dp"
-            android:layout_marginBottom="24dp"
+            android:layout_marginEnd="42dp"
+            android:layout_marginBottom="42dp"
+            android:contentDescription="@string/fab_main"
+            app:backgroundTint="@color/fab_main"
             app:fabSize="normal"
+            android:src="@drawable/ic_fab_main"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@android:drawable/ic_input_add" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

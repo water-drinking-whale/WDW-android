@@ -41,11 +41,8 @@ class MainActivity : AppCompatActivity() {
             logFab.setOnClickListener {
                 startActivity(Intent(this@MainActivity, LogActivity::class.java))
             }
-            awardFab.setOnClickListener {
+            awardsFab.setOnClickListener {
                 startActivity(Intent(this@MainActivity, AwardActivity::class.java))
-            }
-            myPageFab.setOnClickListener {
-                startActivity(Intent(this@MainActivity, MyPageActivity::class.java))
             }
         }
     }
@@ -55,14 +52,12 @@ class MainActivity : AppCompatActivity() {
         if (isFabOpen) {
             ObjectAnimator.ofFloat(binding.logFab, "translationY", 0f).apply { start() }
             ObjectAnimator.ofFloat(binding.noticeFab, "translationY", 0f).apply { start() }
-            ObjectAnimator.ofFloat(binding.awardFab, "translationY", 0f).apply { start() }
-            ObjectAnimator.ofFloat(binding.myPageFab, "translationY", 0f).apply { start() }
+            ObjectAnimator.ofFloat(binding.awardsFab, "translationY", 0f).apply { start() }
             ObjectAnimator.ofFloat(binding.mainFab, View.ROTATION, 45f, 0f).apply { start() }
         } else { // 플로팅 액션 버튼 열기 - 닫혀있는 플로팅 버튼 꺼내는 애니메이션
-            ObjectAnimator.ofFloat(binding.logFab, "translationY", -720f).apply { start() }
-            ObjectAnimator.ofFloat(binding.noticeFab, "translationY", -540f).apply { start() }
-            ObjectAnimator.ofFloat(binding.awardFab, "translationY", -360f).apply { start() }
-            ObjectAnimator.ofFloat(binding.myPageFab, "translationY", -180f).apply { start() }
+            ObjectAnimator.ofFloat(binding.logFab, "translationY", -600f).apply { start() }
+            ObjectAnimator.ofFloat(binding.noticeFab, "translationY", -400f).apply { start() }
+            ObjectAnimator.ofFloat(binding.awardsFab, "translationY", -200f).apply { start() }
             ObjectAnimator.ofFloat(binding.mainFab, View.ROTATION, 0f, 45f).apply { start() }
         }
 
@@ -90,7 +85,7 @@ class MainActivity : AppCompatActivity() {
 
         val builder = AlertDialog.Builder(this)
         builder.apply {
-            setMessage(R.string.home_today_intake)
+            setMessage(R.string.main_today_intake)
             setView(dialogBinding.root)
             setCancelable(false)
             setPositiveButton(R.string.positive_btn, null)
