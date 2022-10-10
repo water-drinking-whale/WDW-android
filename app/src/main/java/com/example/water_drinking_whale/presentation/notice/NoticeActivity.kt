@@ -25,7 +25,6 @@ import java.text.DateFormat
 import java.util.Calendar
 import kotlin.collections.ArrayList
 
-
 class NoticeActivity : AppCompatActivity(), TimePickerDialog.OnTimeSetListener {
 
     private lateinit var binding: ActivityNoticeBinding
