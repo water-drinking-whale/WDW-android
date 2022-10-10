@@ -13,25 +13,25 @@ import com.example.water_drinking_whale.R
 
 class NotificationHelper(base: Context?) : ContextWrapper(base) {
 
-
-
     private val channelID = "channelID"
     private val channelNm = "channelNm"
 
     init {
-        //안드로이드 버전이 오레오거나 이상이면 채널 생성
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+        // 안드로이드 버전이 오레오거나 이상이면 채널 생성
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
-            //채널 생성
+            // 채널 생성
             createChannel()
         }
     }
 
-    //채널 생성
+    // 채널 생성
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun createChannel(){
-        var channel = NotificationChannel(channelID, channelNm,
-            NotificationManager.IMPORTANCE_DEFAULT)
+    private fun createChannel() {
+        var channel = NotificationChannel(
+            channelID, channelNm,
+            NotificationManager.IMPORTANCE_DEFAULT
+        )
 
         channel.enableLights(true)
         channel.enableVibration(true)
@@ -41,20 +41,18 @@ class NotificationHelper(base: Context?) : ContextWrapper(base) {
         getManager().createNotificationChannel(channel)
     }
 
-    //NotificationManager 생성
+    // NotificationManager 생성
     fun getManager(): NotificationManager {
 
         return getSystemService(NOTIFICATION_SERVICE) as NotificationManager
     }
 
-    //notification 설정
-    fun getChannelNotification(time: String?): NotificationCompat.Builder{
+    // notification 설정
+    fun getChannelNotification(time: String?): NotificationCompat.Builder {
 
         return NotificationCompat.Builder(applicationContext, channelID)
             .setContentTitle(time)
             .setContentText("알람입니다.")
             .setSmallIcon(R.drawable.ic_launcher_background)
     }
-
-
 }

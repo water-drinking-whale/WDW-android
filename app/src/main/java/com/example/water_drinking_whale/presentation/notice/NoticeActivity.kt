@@ -9,9 +9,9 @@ import android.content.Intent
 import android.graphics.Canvas
 import android.graphics.Color
 import android.os.AsyncTask
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TimePicker
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,15 +20,11 @@ import com.example.water_drinking_whale.R
 import com.example.water_drinking_whale.data.database.AppDatabase
 import com.example.water_drinking_whale.data.database.Notice
 import com.example.water_drinking_whale.databinding.ActivityNoticeBinding
-
-
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
-
-
 import java.text.DateFormat
 import java.util.*
 
-class NoticeActivity : AppCompatActivity(), TimePickerDialog.OnTimeSetListener{
+class NoticeActivity : AppCompatActivity(), TimePickerDialog.OnTimeSetListener {
 
     private lateinit var binding: ActivityNoticeBinding
 
@@ -36,22 +32,20 @@ class NoticeActivity : AppCompatActivity(), TimePickerDialog.OnTimeSetListener{
 
     var noticeList: ArrayList<Notice> = arrayListOf<Notice>()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notice)
 
         db = AppDatabase.getInstance(applicationContext)!!
 
-        //binding 초기화
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_notice)
-
+        // binding 초기화
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_notice)
 
         getAllNotice()
 
         noticeList = db.noticeDao().getAll() as ArrayList<Notice>
 
-        ItemTouchHelper(object: ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT){
+        ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
             override fun onMove(
                 recyclerView: RecyclerView,
                 viewHolder: RecyclerView.ViewHolder,
@@ -63,8 +57,8 @@ class NoticeActivity : AppCompatActivity(), TimePickerDialog.OnTimeSetListener{
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 var position: Int = viewHolder.bindingAdapterPosition
 
-                when(direction){
-                    ItemTouchHelper.LEFT->{
+                when (direction) {
+                    ItemTouchHelper.LEFT -> {
                         var id: Long? = noticeList.get(position).id
                         var hour: Int = noticeList.get(position).hour
                         var minute: Int = noticeList.get(position).minute
@@ -72,9 +66,8 @@ class NoticeActivity : AppCompatActivity(), TimePickerDialog.OnTimeSetListener{
 
                         var notice: Notice = Notice(id, hour, minute, am_pm)
 
-                        //삭제
+                        // 삭제
                         deleteNotice(notice)
-
                     }
                 }
             }
@@ -88,9 +81,11 @@ class NoticeActivity : AppCompatActivity(), TimePickerDialog.OnTimeSetListener{
                 actionState: Int,
                 isCurrentlyActive: Boolean
             ) {
-                //스와이프 기능
-                RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder,
-                    dX,dY, actionState, isCurrentlyActive)
+                // 스와이프 기능
+                RecyclerViewSwipeDecorator.Builder(
+                    c, recyclerView, viewHolder,
+                    dX, dY, actionState, isCurrentlyActive
+                )
                     .addSwipeLeftBackgroundColor(Color.RED)
                     .addSwipeLeftActionIcon(R.drawable.ic_delete)
                     .addSwipeLeftLabel("삭제")
@@ -108,32 +103,25 @@ class NoticeActivity : AppCompatActivity(), TimePickerDialog.OnTimeSetListener{
                     isCurrentlyActive
                 )
             }
-
         }).attachToRecyclerView(binding.noticeRecyclerView)
 
-
-
-        //알람 설정
+        // 알람 설정
         binding.timeBtn.setOnClickListener {
 
             var timePicker = TimePickerFragment()
-            //시계 호출
+            // 시계 호출
             timePicker.show(supportFragmentManager, "Time Picker")
         }
-
 
 //        //알람 취소
 //        binding.alarmCancelBtn.setOnClickListener {
 //            // 알람 취소 함수
 //            cancleAlarm()
 //        }
-
-
     }
 
-    //시간 정하면 호출되는 함수
+    // 시간 정하면 호출되는 함수
     override fun onTimeSet(timePicker: TimePicker?, hourOfDay: Int, minute: Int) {
-
 
         val notice = Notice(null, timeSet(hourOfDay), minute, AM_PM(hourOfDay))
         insertNotice(notice)
@@ -147,37 +135,32 @@ class NoticeActivity : AppCompatActivity(), TimePickerDialog.OnTimeSetListener{
             calendar.set(Calendar.SECOND, 0)
             startAlarm(calendar)
         }
-
-
     }
 
+    // 알람 설정
+    private fun startAlarm(calendar: Calendar) {
 
-    //알람 설정
-    private fun startAlarm(calendar: Calendar){
-
-        //알람매니저 선언
+        // 알람매니저 선언
         var alarmManager: AlarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
         var intent = Intent(this, NotificationReceiver:: class.java)
 
-        //데이터 담기
+        // 데이터 담기
         var curTime = DateFormat.getTimeInstance(DateFormat.SHORT).format(calendar.time)
-
 
         intent.putExtra("time", curTime)
 
         var pendingIntent = PendingIntent.getBroadcast(this, getRandomRequestCode(), intent, PendingIntent.FLAG_CANCEL_CURRENT)
 
-        //설정 시간이 현재시간 이전이면 +1일
+        // 설정 시간이 현재시간 이전이면 +1일
         if (calendar.before(Calendar.getInstance())) {
             calendar.add(Calendar.DATE, 1)
         }
 
         alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, pendingIntent)
-
     }
 
-    //알람 취소
+    // 알람 취소
 //    private fun cancleAlarm(){
 //
 //        //알람매니저 선언
@@ -195,7 +178,7 @@ class NoticeActivity : AppCompatActivity(), TimePickerDialog.OnTimeSetListener{
     @SuppressLint("StaticFieldLeak")
     fun insertNotice(notice: Notice) {
         val insertTask = object : AsyncTask<Unit, Unit, Unit>() {
-            override fun doInBackground(vararg params: Unit?){
+            override fun doInBackground(vararg params: Unit?) {
                 db.noticeDao().insert(notice)
             }
 
@@ -205,12 +188,11 @@ class NoticeActivity : AppCompatActivity(), TimePickerDialog.OnTimeSetListener{
             }
         }
         insertTask.execute()
-
     }
 
     @SuppressLint("StaticFieldLeak")
-    fun getAllNotice(){
-        val getTask = object : AsyncTask<Unit, Unit, Unit>(){
+    fun getAllNotice() {
+        val getTask = object : AsyncTask<Unit, Unit, Unit>() {
             override fun doInBackground(vararg params: Unit?) {
                 noticeList = db.noticeDao().getAll() as ArrayList<Notice>
             }
@@ -224,12 +206,12 @@ class NoticeActivity : AppCompatActivity(), TimePickerDialog.OnTimeSetListener{
     }
 
     @SuppressLint("StaticFieldLeak")
-    fun deleteNotice(notice: Notice){
-        val deleteTask = object: AsyncTask<Unit, Unit, Unit>(){
-            override fun doInBackground(vararg params: Unit?){
+    fun deleteNotice(notice: Notice) {
+        val deleteTask = object : AsyncTask<Unit, Unit, Unit>() {
+            override fun doInBackground(vararg params: Unit?) {
                 db.noticeDao().delete(notice)
             }
-            override fun onPostExecute(result: Unit?){
+            override fun onPostExecute(result: Unit?) {
                 super.onPostExecute(result)
                 getAllNotice()
             }
@@ -237,20 +219,18 @@ class NoticeActivity : AppCompatActivity(), TimePickerDialog.OnTimeSetListener{
         deleteTask.execute()
     }
 
-    fun setRecyclerview(noticeList : ArrayList<Notice>){
-        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false)
+    fun setRecyclerview(noticeList: ArrayList<Notice>) {
+        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         binding.noticeRecyclerView.layoutManager = layoutManager
         binding.noticeRecyclerView.adapter = NoticeAdapter(applicationContext, noticeList)
     }
 
-
-
     private fun getRandomRequestCode() = RandomUtil.getRandomInt()
 
-    //24시간 단위 12시간 단위로 변경
-    private fun timeSet(hour:Int):Int{
+    // 24시간 단위 12시간 단위로 변경
+    private fun timeSet(hour: Int): Int {
         var hour = hour
-        if (hour> 12) {
+        if (hour > 12) {
             hour -= 12
         }
         return hour
@@ -265,6 +245,4 @@ class NoticeActivity : AppCompatActivity(), TimePickerDialog.OnTimeSetListener{
         }
         return ampm!!
     }
-
-
 }

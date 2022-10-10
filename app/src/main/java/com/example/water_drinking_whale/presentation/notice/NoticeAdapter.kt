@@ -14,7 +14,7 @@ class NoticeAdapter(val context: Context, var list: ArrayList<Notice>) : Recycle
         return ViewHolder(binding)
     }
 
-    inner class ViewHolder(val binding: NoticeBinding):RecyclerView.ViewHolder(binding.root){
+    inner class ViewHolder(val binding: NoticeBinding) : RecyclerView.ViewHolder(binding.root) {
         val am_pm = binding.ampmTv
         val hour = binding.hourTv
         val minute = binding.minuteTv
@@ -27,10 +27,7 @@ class NoticeAdapter(val context: Context, var list: ArrayList<Notice>) : Recycle
         holder.am_pm.text = notice.am_pm
         holder.hour.text = notice.hour.toString()
         holder.minute.text = notice.minute.toString()
-
     }
-
-
 
     override fun getItemCount(): Int {
         return list.size
