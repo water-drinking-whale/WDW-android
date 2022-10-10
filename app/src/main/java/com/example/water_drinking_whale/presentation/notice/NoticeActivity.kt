@@ -22,7 +22,9 @@ import com.example.water_drinking_whale.data.database.Notice
 import com.example.water_drinking_whale.databinding.ActivityNoticeBinding
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
 import java.text.DateFormat
-import java.util.*
+import java.util.Calendar
+import kotlin.collections.ArrayList
+
 
 class NoticeActivity : AppCompatActivity(), TimePickerDialog.OnTimeSetListener {
 
