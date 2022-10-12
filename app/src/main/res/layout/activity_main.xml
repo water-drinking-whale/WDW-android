@@ -7,6 +7,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".presentation.main.MainActivity">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_main_background"/>
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/mainToolbar"
@@ -91,26 +95,31 @@
         </LinearLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/awardsFab"
+            android:id="@+id/mainFab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="42dp"
             android:layout_marginBottom="42dp"
-            android:contentDescription="@string/fab_awards"
-            app:backgroundTint="@color/white"
-            app:fabSize="normal"
+            android:contentDescription="@string/fab_main"
+            android:src="@drawable/ic_fab_main"
+            android:clickable="true"
+            android:focusable="true"
+            app:backgroundTint="@color/fab_main"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/noticeFab"
+            android:id="@+id/intakeFab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="42dp"
             android:layout_marginBottom="42dp"
-            android:contentDescription="@string/fab_notice"
+            android:contentDescription="@string/fab_intake"
+            android:src="@drawable/ic_fab_intake"
+            android:clickable="true"
+            android:focusable="true"
+
             app:backgroundTint="@color/white"
-            app:fabSize="normal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
@@ -118,26 +127,43 @@
             android:id="@+id/logFab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="42dp"
-            android:layout_marginBottom="42dp"
+            android:layout_marginBottom="16dp"
             android:contentDescription="@string/fab_log"
+            android:src="@drawable/ic_fab_log"
+            android:clickable="true"
+            android:focusable="true"
+
             app:backgroundTint="@color/white"
-            app:fabSize="normal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintBottom_toTopOf="@id/intakeFab"
+            app:layout_constraintEnd_toEndOf="@id/intakeFab" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/mainFab"
+            android:id="@+id/noticeFab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="42dp"
-            android:layout_marginBottom="42dp"
-            android:contentDescription="@string/fab_main"
-            app:backgroundTint="@color/fab_main"
-            app:fabSize="normal"
-            android:src="@drawable/ic_fab_main"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:layout_marginBottom="16dp"
+            android:contentDescription="@string/fab_notice"
+            android:src="@drawable/ic_fab_notice"
+            android:clickable="true"
+            android:focusable="true"
+
+            app:backgroundTint="@color/white"
+            app:layout_constraintBottom_toTopOf="@id/logFab"
+            app:layout_constraintEnd_toEndOf="@id/logFab" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/awardsFab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="@string/fab_awards"
+            android:src="@drawable/ic_fab_awards"
+            android:clickable="true"
+            android:focusable="true"
+
+            app:backgroundTint="@color/white"
+            app:layout_constraintBottom_toTopOf="@id/noticeFab"
+            app:layout_constraintEnd_toEndOf="@id/noticeFab" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
