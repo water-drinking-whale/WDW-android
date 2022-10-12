@@ -1,17 +1,19 @@
 <resources>
     <string name="app_name">물먹는고래</string>
 
-    <!-- bottomNavigationView -->
-    <string name="home">물마시기</string>
-    <string name="log">기록</string>
-    <string name="notice">알림</string>
-
-    <!-- home fragment -->
-    <string name="home_today">오늘의 물 섭취량은?</string>
-    <string name="home_today_intake">오늘의 물 섭취량을 입력해 주세요!</string>
+    <!-- main -->
+    <string name="main_today">오늘</string>
+    <string name="main_today_intake">오늘의 물 섭취량을 입력해 주세요!</string>
     <string name="ex_intake">100</string>
     <string name="ex_intake_unit">ml</string>
-    <string name="home_setting">설정</string>
+    <string name="main_mypage">마이페이지</string>
+
+    <!-- main fab -->
+    <string name="fab_main">main</string>
+    <string name="fab_intake">intake</string>
+    <string name="fab_log">log</string>
+    <string name="fab_awards">awards</string>
+    <string name="fab_notice">notice</string>
 
     <!-- button -->
     <string name="positive_btn">확인</string>
