@@ -50,18 +50,7 @@
             android:textSize="20sp"/>
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-
-
-
-            <Switch
-                android:id="@+id/noticeSwitch"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:focusable="false"
-                android:focusableInTouchMode="false" />
-        </RelativeLayout>
+            android:layout_height="match_parent"/>
     </LinearLayout>
 
 
