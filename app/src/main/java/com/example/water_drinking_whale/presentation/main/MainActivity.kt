@@ -1,6 +1,5 @@
 package com.example.water_drinking_whale.presentation.main
 
-import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
