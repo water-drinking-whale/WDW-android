@@ -98,8 +98,8 @@
             android:id="@+id/mainFab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="42dp"
-            android:layout_marginBottom="42dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="32dp"
             android:contentDescription="@string/fab_main"
             android:src="@drawable/ic_fab_main"
             android:clickable="true"
@@ -112,27 +112,26 @@
             android:id="@+id/intakeFab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="42dp"
-            android:layout_marginBottom="42dp"
+            android:layout_marginBottom="10dp"
             android:contentDescription="@string/fab_intake"
             android:src="@drawable/ic_fab_intake"
             android:clickable="true"
             android:focusable="true"
-
+            android:visibility="invisible"
             app:backgroundTint="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintBottom_toTopOf="@id/mainFab"
+            app:layout_constraintEnd_toEndOf="@id/mainFab" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/logFab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="10dp"
             android:contentDescription="@string/fab_log"
             android:src="@drawable/ic_fab_log"
             android:clickable="true"
             android:focusable="true"
-
+            android:visibility="invisible"
             app:backgroundTint="@color/white"
             app:layout_constraintBottom_toTopOf="@id/intakeFab"
             app:layout_constraintEnd_toEndOf="@id/intakeFab" />
@@ -141,12 +140,12 @@
             android:id="@+id/noticeFab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="10dp"
             android:contentDescription="@string/fab_notice"
             android:src="@drawable/ic_fab_notice"
             android:clickable="true"
             android:focusable="true"
-
+            android:visibility="invisible"
             app:backgroundTint="@color/white"
             app:layout_constraintBottom_toTopOf="@id/logFab"
             app:layout_constraintEnd_toEndOf="@id/logFab" />
@@ -155,12 +154,12 @@
             android:id="@+id/awardsFab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="10dp"
             android:contentDescription="@string/fab_awards"
             android:src="@drawable/ic_fab_awards"
             android:clickable="true"
             android:focusable="true"
-
+            android:visibility="invisible"
             app:backgroundTint="@color/white"
             app:layout_constraintBottom_toTopOf="@id/noticeFab"
             app:layout_constraintEnd_toEndOf="@id/noticeFab" />

@@ -4,6 +4,8 @@ import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -21,7 +23,12 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private var isFabOpen = false
+    private var isFabClicked = false
+
+    private val rotateOpenAnimation: Animation by lazy { AnimationUtils.loadAnimation(this, R.anim.fab_rotate_open_animation) }
+    private val rotateCloseAnimation: Animation by lazy { AnimationUtils.loadAnimation(this, R.anim.fab_rotate_close_animation) }
+    private val fromBottomAnimation: Animation by lazy { AnimationUtils.loadAnimation(this, R.anim.fab_from_bottom_animation) }
+    private val toBottomAnimation: Animation by lazy { AnimationUtils.loadAnimation(this, R.anim.fab_to_bottom_animation) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.AppTheme)
@@ -34,34 +41,51 @@ class MainActivity : AppCompatActivity() {
 
     private fun setFabClickEvent() {
         with(binding) {
-            mainFab.setOnClickListener { toggleFab() }
+            mainFab.setOnClickListener { onMainFabClicked() }
+            awardsFab.setOnClickListener {
+                startActivity(Intent(this@MainActivity, AwardActivity::class.java))
+            }
             noticeFab.setOnClickListener {
                 startActivity(Intent(this@MainActivity, NoticeActivity::class.java))
             }
             logFab.setOnClickListener {
                 startActivity(Intent(this@MainActivity, LogActivity::class.java))
             }
-            awardsFab.setOnClickListener {
-                startActivity(Intent(this@MainActivity, AwardActivity::class.java))
+            intakeFab.setOnClickListener {
+                setWaterIntakeDialog()
             }
         }
     }
 
-    private fun toggleFab() {
-        // 플로팅 액션 버튼 닫기 - 열려있는 플로팅 버튼 집어넣는 애니메이션
-        if (isFabOpen) {
-            ObjectAnimator.ofFloat(binding.logFab, "translationY", 0f).apply { start() }
-            ObjectAnimator.ofFloat(binding.noticeFab, "translationY", 0f).apply { start() }
-            ObjectAnimator.ofFloat(binding.awardsFab, "translationY", 0f).apply { start() }
-            ObjectAnimator.ofFloat(binding.mainFab, View.ROTATION, 45f, 0f).apply { start() }
-        } else { // 플로팅 액션 버튼 열기 - 닫혀있는 플로팅 버튼 꺼내는 애니메이션
-            ObjectAnimator.ofFloat(binding.logFab, "translationY", -600f).apply { start() }
-            ObjectAnimator.ofFloat(binding.noticeFab, "translationY", -400f).apply { start() }
-            ObjectAnimator.ofFloat(binding.awardsFab, "translationY", -200f).apply { start() }
-            ObjectAnimator.ofFloat(binding.mainFab, View.ROTATION, 0f, 45f).apply { start() }
-        }
+    private fun onMainFabClicked() {
+        setVisibility()
+        setAnimation()
 
-        isFabOpen = !isFabOpen
+        isFabClicked = !isFabClicked
+    }
+
+    private fun setVisibility() {
+        val visibility = if (!isFabClicked) View.VISIBLE else View.INVISIBLE
+
+        with(binding) {
+            awardsFab.visibility = visibility
+            noticeFab.visibility = visibility
+            logFab.visibility = visibility
+            intakeFab.visibility = visibility
+        }
+    }
+
+    private fun setAnimation() {
+        val rotateAnimation = if (!isFabClicked) rotateOpenAnimation else rotateCloseAnimation
+        val animation = if (!isFabClicked) fromBottomAnimation else toBottomAnimation
+
+        with(binding) {
+            mainFab.startAnimation(rotateAnimation)
+            awardsFab.startAnimation(animation)
+            noticeFab.startAnimation(animation)
+            logFab.startAnimation(animation)
+            intakeFab.startAnimation(animation)
+        }
     }
 
     private fun setToolbar() {
@@ -95,7 +119,7 @@ class MainActivity : AppCompatActivity() {
             getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
                 val todayIntake = binding.mainTodayIntakeTv
                 if (intakeEt.text.toString() == "") {
-                    Toast.makeText(context, "물 섭취량을 입력해 주세요.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "물 섭취량을 입력해 주세요", Toast.LENGTH_SHORT).show()
                 } else {
                     val total = todayIntake.text.toString().toInt() + intakeEt.text.toString().toInt()
                     todayIntake.text = total.toString()
