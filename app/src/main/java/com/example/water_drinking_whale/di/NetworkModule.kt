@@ -20,7 +20,7 @@ class NetworkModule {
     fun provideOkHttpClient(): OkHttpClient {
         val header = Interceptor {
             val newRequest = it.request().newBuilder()
-                .header("Authorization", "")
+                .header("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ3ZHciLCJpZCI6MTgsImV4cCI6MTY2NzA1MjAzNywidXNlcm5hbWUiOiJ0ZXN0MSJ9.txytMa_0h9jdn7KF_ezHhXyummXMWDFRuE1eitVUE84S13nguE8TEPJeaSUK17_WGSQfnTiRd0CpV6IkKQDVMw")
                 .build()
             it.proceed(newRequest)
         }
@@ -44,6 +44,6 @@ class NetworkModule {
         .build()
 
     companion object {
-        private const val BASE_URL = ""
+        private const val BASE_URL = "http://3.39.48.81:8090/"
     }
 }
