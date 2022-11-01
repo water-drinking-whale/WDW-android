@@ -15,6 +15,18 @@
     <string name="fab_awards">awards</string>
     <string name="fab_notice">notice</string>
 
+    <!-- mypage -->
+    <string name="mypage_setting">설정</string>
+    <string name="mypage_account">계정</string>
+    <string name="mypage_edit_name">이름 변경</string>
+    <string name="mypage_edit_password">비밀번호 변경</string>
+    <string name="mypage_edit_weight">몸무게 변경</string>
+    <string name="mypage_unregister">회원 탈퇴</string>
+    <string name="mypage_app_info">앱정보</string>
+    <string name="mypage_feedback">개발자에게 피드백 전송</string>
+    <string name="mypage_policy">개인정보처리방침</string>
+    <string name="mypage_logout">로그아웃</string>
+
     <!-- button -->
     <string name="positive_btn">확인</string>
     <string name="negative_btn">취소</string>
