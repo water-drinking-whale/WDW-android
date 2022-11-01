@@ -8,6 +8,14 @@ data class TodayRecordResponse(
 )
 
 data class TodayRecord(
-    val recordDate: Date,
-    val totalSum: Int
+    val recordDate: Date? = null,
+    val totalSum: Int = 0
+)
+
+data class NewTodayRecordResponse(
+    val status: Int
+)
+
+data class TodayRecordRequest(
+    val quantity: Int
 )

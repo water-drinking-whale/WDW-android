@@ -6,9 +6,11 @@ import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.lifecycleScope
 import com.example.water_drinking_whale.R
 import com.example.water_drinking_whale.databinding.ActivityMainBinding
 import com.example.water_drinking_whale.databinding.DialogHomeBinding
@@ -17,11 +19,13 @@ import com.example.water_drinking_whale.presentation.log.LogActivity
 import com.example.water_drinking_whale.presentation.mypage.MyPageActivity
 import com.example.water_drinking_whale.presentation.notice.NoticeActivity
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private val viewModel: MainViewModel by viewModels()
     private var isFabClicked = false
 
     private val rotateOpenAnimation: Animation by lazy { AnimationUtils.loadAnimation(this, R.anim.fab_rotate_open_animation) }
@@ -34,11 +38,27 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        setToolbar()
-        setFabClickEvent()
+        initToolbar()
+        initFabClickEvent()
+        collectFlows()
     }
 
-    private fun setFabClickEvent() {
+    private fun initToolbar() {
+        binding.mainToolbar.apply {
+            inflateMenu(R.menu.main_menu)
+            setOnMenuItemClickListener {
+                when (it.itemId) {
+                    R.id.homeSetting -> {
+                        startActivity(Intent(this@MainActivity, MyPageActivity::class.java))
+                        true
+                    }
+                    else -> false
+                }
+            }
+        }
+    }
+
+    private fun initFabClickEvent() {
         with(binding) {
             mainFab.setOnClickListener { onMainFabClicked() }
             awardsFab.setOnClickListener {
@@ -87,21 +107,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun setToolbar() {
-        binding.mainToolbar.apply {
-            inflateMenu(R.menu.main_menu)
-            setOnMenuItemClickListener {
-                when (it.itemId) {
-                    R.id.homeSetting -> {
-                        startActivity(Intent(this@MainActivity, MyPageActivity::class.java))
-                        true
-                    }
-                    else -> false
-                }
-            }
-        }
-    }
-
     private fun setWaterIntakeDialog() {
         val dialogBinding = DialogHomeBinding.inflate(layoutInflater)
         val intakeEt = dialogBinding.dialogEt
@@ -116,15 +121,22 @@ class MainActivity : AppCompatActivity() {
         }.create().apply {
             show()
             getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
-                val todayIntake = binding.mainTodayIntakeTv
                 if (intakeEt.text.toString() == "") {
                     Toast.makeText(context, "물 섭취량을 입력해 주세요", Toast.LENGTH_SHORT).show()
                 } else {
-                    val total = todayIntake.text.toString().toInt() + intakeEt.text.toString().toInt()
-                    todayIntake.text = total.toString()
-                    // updateDB(total)
+                    val total = binding.mainTodayIntakeTv.text.toString().toInt() + intakeEt.text.toString().toInt()
+                    viewModel.addWaterIntake(total)
                     dismiss()
                 }
+            }
+        }
+    }
+
+    private fun collectFlows() {
+        lifecycleScope.launchWhenStarted {
+            viewModel.todayRecord.collectLatest { todayRecord ->
+                binding.mainTodayIntakeTv.text = todayRecord.totalSum.toString()
+                binding.mainDateTv.text = todayRecord.recordDate.toString()
             }
         }
     }
