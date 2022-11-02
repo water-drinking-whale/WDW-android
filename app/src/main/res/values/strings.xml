@@ -27,6 +27,17 @@
     <string name="mypage_policy">개인정보처리방침</string>
     <string name="mypage_logout">로그아웃</string>
 
+    <!-- mypage edit -->
+    <string name="present_password">현재 비밀번호</string>
+    <string name="new_password">새로운 비밀번호</string>
+    <string name="check_new_password">새로운 비밀번호 확인</string>
+    <string name="present_name">현재 이름</string>
+    <string name="new_name">새로운 이름</string>
+    <string name="present_weight">현재 몸무게</string>
+    <string name="new_weight">몸무게</string>
+
+    <string name="edit">변경하기</string>
+
     <!-- button -->
     <string name="positive_btn">확인</string>
     <string name="negative_btn">취소</string>
