@@ -34,7 +34,6 @@ class MainActivity : AppCompatActivity() {
     private val toBottomAnimation: Animation by lazy { AnimationUtils.loadAnimation(this, R.anim.fab_to_bottom_animation) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
