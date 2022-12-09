@@ -33,8 +33,9 @@ class MainActivity : AppCompatActivity() {
     private val fromBottomAnimation: Animation by lazy { AnimationUtils.loadAnimation(this, R.anim.fab_from_bottom_animation) }
     private val toBottomAnimation: Animation by lazy { AnimationUtils.loadAnimation(this, R.anim.fab_to_bottom_animation) }
 
+    private var backWaitTime: Long = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
-        setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
@@ -138,6 +139,15 @@ class MainActivity : AppCompatActivity() {
                 binding.mainDateTv.text = todayRecord.recordDate.toString()
                 onMainFabClicked()
             }
+        }
+    }
+
+    override fun onBackPressed() {
+        if (System.currentTimeMillis() - backWaitTime >= 2000) {
+            backWaitTime = System.currentTimeMillis()
+            Toast.makeText(this, "뒤로가기 버튼을 한번 더 누르면 종료됩니다", Toast.LENGTH_SHORT).show()
+        } else {
+            finish()
         }
     }
 }

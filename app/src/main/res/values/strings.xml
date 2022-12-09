@@ -38,10 +38,15 @@
 
     <string name="edit">변경하기</string>
 
+    <!-- login -->
+    <string name="login_id">아이디</string>
+    <string name="login_password">비밀번호</string>
+    <string name="login">로그인</string>
+    <string name="login_find_password">비밀번호 찾기</string>
+    <string name="login_signup">회원가입</string>
+
     <!-- button -->
     <string name="positive_btn">확인</string>
     <string name="negative_btn">취소</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
