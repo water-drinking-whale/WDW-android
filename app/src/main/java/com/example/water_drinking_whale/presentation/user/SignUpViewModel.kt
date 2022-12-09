@@ -1,6 +1,5 @@
 package com.example.water_drinking_whale.presentation.user
 
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,8 +8,8 @@ import com.example.water_drinking_whale.data.user.model.SignUpRequest
 import com.example.water_drinking_whale.data.user.repository.UserRepository
 import com.example.water_drinking_whale.utils.NetworkState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @HiltViewModel
 class SignUpViewModel @Inject constructor(

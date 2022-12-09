@@ -2,13 +2,13 @@ package com.example.water_drinking_whale.presentation.user
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.water_drinking_whale.R
 import com.example.water_drinking_whale.databinding.ActivitySignUpBinding
-import com.example.water_drinking_whale.presentation.main.MainActivity
 import com.example.water_drinking_whale.utils.NetworkState
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -22,8 +22,18 @@ class SignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_up)
 
+        initToolbar()
+
         binding.signupBtn.setOnClickListener { signUp() }
         observeNetworkState()
+    }
+
+    private fun initToolbar() {
+        setSupportActionBar(binding.signupToolbar)
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowTitleEnabled(false)
+        }
     }
 
     private fun signUp() {
@@ -46,6 +56,7 @@ class SignUpActivity : AppCompatActivity() {
             networkState.observe(this@SignUpActivity) { networkState ->
                 when (networkState) {
                     NetworkState.SUCCESS -> {
+                        Toast.makeText(this@SignUpActivity, "회원가입이 완료되었습니다", Toast.LENGTH_SHORT).show()
                         startActivity(Intent(this@SignUpActivity, LoginActivity::class.java))
                         finish()
                     }
@@ -56,5 +67,12 @@ class SignUpActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> { onBackPressed() }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
