@@ -1,5 +1,6 @@
 package com.example.water_drinking_whale.di
 
+import com.example.water_drinking_whale.WDWApp
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,8 +20,9 @@ class NetworkModule {
     @Singleton
     fun provideOkHttpClient(): OkHttpClient {
         val header = Interceptor {
+            val token = WDWApp.sharedPreferencesUtil.getSharedPreferences("token")
             val newRequest = it.request().newBuilder()
-                .header("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ3ZHciLCJpZCI6MTgsImV4cCI6MTY2NzA1MjAzNywidXNlcm5hbWUiOiJ0ZXN0MSJ9.txytMa_0h9jdn7KF_ezHhXyummXMWDFRuE1eitVUE84S13nguE8TEPJeaSUK17_WGSQfnTiRd0CpV6IkKQDVMw")
+                .header("Authorization", token ?: "")
                 .build()
             it.proceed(newRequest)
         }
