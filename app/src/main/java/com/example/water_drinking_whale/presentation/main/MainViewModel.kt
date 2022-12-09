@@ -3,6 +3,7 @@ package com.example.water_drinking_whale.presentation.main
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.water_drinking_whale.data.main.model.TodayRecord
+import com.example.water_drinking_whale.data.main.model.TodayRecordRequest
 import com.example.water_drinking_whale.data.main.repository.MainRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -5,7 +5,21 @@ data class TodayRecord(
     val totalSum: Int = 0
 )
 
-data class GetTodayRecordResponse(
+data class TodayRecordResponse(
     val status: Int,
     val data: TodayRecord
+)
+
+data class NewTodayRecord(
+    val username: String,
+    val quantity: Int
+)
+
+data class NewTodayRecordResponse(
+    val status: Int,
+    val data: NewTodayRecord
+)
+
+data class TodayRecordRequest(
+    val quantity: Int
 )
