@@ -125,8 +125,7 @@ class MainActivity : AppCompatActivity() {
                 if (intakeEt.text.toString() == "") {
                     Toast.makeText(context, "물 섭취량을 입력해 주세요", Toast.LENGTH_SHORT).show()
                 } else {
-                    val total = binding.mainTodayIntakeTv.text.toString().toInt() + intakeEt.text.toString().toInt()
-                    viewModel.addWaterIntake(total)
+                    viewModel.addWaterIntake(intakeEt.text.toString().toInt())
                     dismiss()
                 }
             }
@@ -138,6 +137,7 @@ class MainActivity : AppCompatActivity() {
             viewModel.todayRecord.collectLatest { todayRecord ->
                 binding.mainTodayIntakeTv.text = todayRecord.totalSum.toString()
                 binding.mainDateTv.text = todayRecord.recordDate.toString()
+                onMainFabClicked()
             }
         }
     }

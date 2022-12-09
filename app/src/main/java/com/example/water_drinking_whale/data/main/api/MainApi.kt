@@ -6,7 +6,6 @@ import com.example.water_drinking_whale.data.main.model.TodayRecordResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.POST
-import retrofit2.http.Part
 
 interface MainApi {
 
