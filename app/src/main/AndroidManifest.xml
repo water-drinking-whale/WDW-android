@@ -15,7 +15,10 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".LoginActivity"
+            android:name=".presentation.user.SignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.user.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".presentation.mypage.EditWeightActivity"
