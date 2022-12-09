@@ -1,7 +1,7 @@
 package com.example.water_drinking_whale.di
 
 import com.example.water_drinking_whale.data.main.api.MainApi
-import com.example.water_drinking_whale.data.user.api.LoginApi
+import com.example.water_drinking_whale.data.user.api.UserApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,5 +19,5 @@ class ApiModule {
 
     @Provides
     @Singleton
-    fun provideLoginApi(retrofit: Retrofit): LoginApi = retrofit.create(LoginApi::class.java)
+    fun provideLoginApi(retrofit: Retrofit): UserApi = retrofit.create(UserApi::class.java)
 }
