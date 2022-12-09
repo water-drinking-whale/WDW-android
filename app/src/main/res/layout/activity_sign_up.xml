@@ -8,5 +8,71 @@
         android:layout_height="match_parent"
         tools:context=".presentation.user.SignUpActivity">
 
+        <LinearLayout
+            android:id="@+id/loginLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="40dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/login_signup"
+                android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
+                android:textColor="@color/login_signup"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/signupIdEt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/underline_shape"
+                android:hint="@string/login_id"
+                android:inputType="text"
+                android:padding="14dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+            <EditText
+                android:id="@+id/signupPasswordEt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/underline_shape"
+                android:hint="@string/login_password"
+                android:inputType="textPassword"
+                android:padding="14dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+            <EditText
+                android:id="@+id/signupNameEt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/underline_shape"
+                android:hint="@string/signup_name"
+                android:inputType="text"
+                android:padding="14dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+            <Button
+                android:id="@+id/signupBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/btn_shape"
+                android:padding="10dp"
+                android:text="@string/login_signup"
+                android:textAppearance="@style/TextAppearance.AppCompat.Menu"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+        </LinearLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
