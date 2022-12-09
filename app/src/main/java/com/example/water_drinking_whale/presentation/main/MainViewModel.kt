@@ -25,14 +25,24 @@ class MainViewModel @Inject constructor(
 
     private fun setTodayRecord() {
         viewModelScope.launch {
-            _todayRecord.value = mainRepository.getTodayRecord().data
+            val response = mainRepository.getTodayRecord()
+            if (response.isSuccessful) {
+                _todayRecord.value = response.body()!!.data
+            } else {
+                // exception
+            }
         }
     }
 
     fun addWaterIntake(quantity: Int) {
         viewModelScope.launch {
-            mainRepository.setTodayRecord(TodayRecordRequest(quantity = quantity))
-            _todayRecord.emit(_todayRecord.value.copy(totalSum = _todayRecord.value.totalSum + quantity))
+            val response = mainRepository.setTodayRecord(TodayRecordRequest(quantity = quantity))
+            if (response.isSuccessful) {
+                // response.body()에서 new total sum 받아야 함
+                _todayRecord.emit(_todayRecord.value.copy(totalSum = _todayRecord.value.totalSum + quantity))
+            } else {
+                // exception
+            }
         }
     }
 }
